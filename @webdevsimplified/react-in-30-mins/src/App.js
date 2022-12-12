@@ -19,11 +19,11 @@ export default function App() {
   // sending todos as a prop for TodoList
   return (
     <>
+      <TodoList todos={ todos } toggleTodo={ toggleTodo } />
       <input ref={todoNameRef} type='text' />
       <button onClick={handleAddTodo}>Add Todo</button>
       <button>Clear completed Todos</button>
       <div><span>0</span> left to do</div>
-      <TodoList todos={ todos } />
     </>
   );
 
@@ -48,5 +48,17 @@ export default function App() {
     );
     // reset the name in the input
     todoNameRef.current.value = null;
+  }
+
+  // toggles the complete checkbox of the todo with given ID
+  function toggleTodo(id) {
+    // copy the array of a working copy
+    const newTodos = [...todos];
+    // find the todo with the ID to toggle
+    const todo = newTodos.find(todo => (id == todo.id));
+    // negate this todo
+    todo.complete ^= true;
+    // update the todos
+    setTodos(newTodos)
   }
 };
