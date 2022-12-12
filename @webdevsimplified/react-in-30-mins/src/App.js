@@ -5,7 +5,9 @@ export default function App() {
   // renders TodoList
   // can only return one XML element
   return (
-    <TodoList />
-    <input type='text' />
+    <>
+      <TodoList />
+      <input type='text' />
+    </>
   );
 };
