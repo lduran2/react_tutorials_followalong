@@ -1,7 +1,9 @@
 import React from 'react';
+import TodoList from './TodoList'
 
-function App() {
-  return null;
-}
-
-export default App;
+export default function App() {
+  // renders TodoList
+  return (
+    <TodoList />
+  );
+};
