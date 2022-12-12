@@ -14,9 +14,14 @@ export default function App() {
   const todoNameRef = useRef()
 
   function handleAddTodo(e) {
+    // fetch the name
     const name = todoNameRef.current.value;
+    // do nothing if empty name
     if (''===name) return;
+    // otherwise print out the name
     console.log({'name': name})
+    // reset the name in the input
+    todoNameRef.current.value = null;
   }
 
   // renders TodoList
