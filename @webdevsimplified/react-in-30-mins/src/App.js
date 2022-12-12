@@ -15,7 +15,7 @@ export default function App() {
       [
         {
           "name": "Todo 1",
-          "complete": false
+          "complete": true
         },
         {
           "name": "Todo 2",
