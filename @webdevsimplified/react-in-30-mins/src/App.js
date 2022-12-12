@@ -19,11 +19,11 @@ export default function App() {
   // sending todos as a prop for TodoList
   return (
     <>
-      <TodoList todos={ todos } />
       <input ref={todoNameRef} type='text' />
       <button onClick={handleAddTodo}>Add Todo</button>
       <button>Clear completed Todos</button>
       <div><span>0</span> left to do</div>
+      <TodoList todos={ todos } />
     </>
   );
 
