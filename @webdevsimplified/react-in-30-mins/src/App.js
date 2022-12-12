@@ -22,7 +22,7 @@ export default function App() {
       <TodoList todos={ todos } toggleTodo={ toggleTodo } />
       <input ref={todoNameRef} type='text' />
       <button onClick={handleAddTodo}>Add Todo</button>
-      <button>Clear completed Todos</button>
+      <button onClick={handleClearCompleteTodos}>Clear completed Todos</button>
       <div><span>0</span> left to do</div>
     </>
   );
@@ -48,6 +48,13 @@ export default function App() {
     );
     // reset the name in the input
     todoNameRef.current.value = null;
+  }
+
+  function handleClearCompleteTodos(e) {
+    // working copy ignoring complete todos
+    const newTodos = todos.filter(todo => (!todo.complete));
+    // update to working copy
+    setTodos(newTodos);
   }
 
   // toggles the complete checkbox of the todo with given ID
