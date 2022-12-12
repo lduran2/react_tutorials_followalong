@@ -11,7 +11,23 @@ export default function App() {
   ] =
     // default App state
     // test with 2 Todos
-    useState(['Todo 1', 'Todo 2'])
+    useState(
+      [
+        {
+          "name": "Todo 1",
+          "complete": false
+        },
+        {
+          "name": "Todo 2",
+          "complete": false
+        },
+      ]
+      // auto increment the ID
+      .map((todo, i) => {
+          todo.id = i;
+          return todo;
+      })
+    )
   // renders TodoList
   // can only return one XML element
   // sending todos as a prop for TodoList
