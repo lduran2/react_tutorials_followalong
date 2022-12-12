@@ -7,7 +7,7 @@ export default function TodoList({ todos }) {
   // renders "TODO: Hello, world!"
   return (
     todos.map(
-      todo => <Todo todo={ todo } />
+      todo => <Todo key={ todo } todo={ todo } />
     )
   );
 };
