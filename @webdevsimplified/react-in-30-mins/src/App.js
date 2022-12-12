@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import TodoList from './TodoList'
 
 export default function App() {
@@ -11,9 +11,12 @@ export default function App() {
   ] =
     // default App state to empty list
     useState([])
+  const todoNameRef = useRef()
 
   function handleAddTodo(e) {
-    console.log(e);
+    const name = todoNameRef.current.value;
+    if (''===name) return;
+    console.log({'name': name})
   }
 
   // renders TodoList
@@ -22,7 +25,7 @@ export default function App() {
   return (
     <>
       <TodoList todos={ todos } />
-      <input type='text' />
+      <input ref={todoNameRef} type='text' />
       <button onClick={handleAddTodo}>Add Todo</button>
       <button>Clear completed Todos</button>
       <div><span>0</span> left to do</div>
