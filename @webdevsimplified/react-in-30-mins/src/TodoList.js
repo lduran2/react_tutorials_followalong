@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function TodoList() {
+// @param
+//    todos prop containing Todo objects
+export default function TodoList({ todos }) {
   // renders "TODO: Hello, world!"
   return (
     <div>
-      TODO: Hello, world!
+      {todos.length} todos received
     </div>
   );
 };
