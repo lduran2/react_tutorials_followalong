@@ -1,6 +1,18 @@
-import React, { useState, useRef } from 'react';
-import TodoList from './TodoList';
+import React,
+  {
+    // for app state
+    useState,
+    // for refernces to HTML elements
+    useRef,
+    // for side effects
+    useEffect
+  } from 'react';
+import TodoList, { test } from './TodoList';
+// for Todo ID#s
 import { v4 as uuidv4 } from 'uuid';
+
+// key for local storage for this app
+const LOCAL_STORAGE_KEY = `${App.name}.${TodoList}`;
 
 export default function App() {
   // destructure useState
@@ -14,6 +26,11 @@ export default function App() {
     useState([]);
   // reference to input for adding a todo
   const todoNameRef = useRef();
+
+  // load todos from local storage
+  useEffect(...loadTodos(setTodos));
+  // set them up to write to local storage
+  useEffect(...storeInLocalStorage(todos));
 
   // renders TodoList
   // can only return one XML element
@@ -70,3 +87,22 @@ export default function App() {
     setTodos(newTodos)
   }
 };
+
+function storeInLocalStorage(todos) {
+  return [
+    () => localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos)),
+    [todos]
+  ];
+}
+
+function loadTodos(setTodos) {
+  return [
+    () => {
+      const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      if (!storedTodos) return;
+      console.log({ 'loadTodos': storedTodos, 'setTodos': setTodos });
+      setTodos(storedTodos)
+    },
+    []
+  ];
+}

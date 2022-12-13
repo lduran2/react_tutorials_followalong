@@ -1,4 +1,5 @@
 import React from 'react';
+// for the TODO list items
 import Todo from './Todo';
 
 // @param
